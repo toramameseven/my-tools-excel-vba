@@ -1,0 +1,32 @@
+
+== checkExistOrNot.bas
+
+. Select products of stores.
+
++
+image:./doc/checkExistOrNotB15.png[]
+
++ 
+. The input dialog for the output ob result
+
++
+image:./doc/checkExistOrNotB32.png[]
+
++ 
+. Select the cell for the output.
+
++
+image:./doc/checkExistOrNotB43.png[]
+
++ 
+. Selection is in the text box.
+
++
+image:./doc/checkExistOrNotB57.png[]
+
++ 
+. The result is output.
+
++
+image:./doc/checkExistOrNotB68.png[]
+
