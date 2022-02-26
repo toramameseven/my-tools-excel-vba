@@ -26,6 +26,7 @@ image:./doc/checkExistOrNotB57.png[]
 
 + 
 . The result is output.
+  you can find which store has which products.
 
 +
 image:./doc/checkExistOrNotB68.png[]
