@@ -18,14 +18,21 @@ Sub checkExistOrNot()
         Exit Sub
     End If
     
-    
     Dim data As Variant
     data = rngData
+    
+    'get title
+    Dim title As Variant
+    ReDim title(0 To 1, 0 To dataColumns)
+    If rngData.Resize(1).row > 1 Then
+        title = rngData.Resize(1).Offset(-1)
+    End If
+    
     
     '' output range
     Dim rangeDiff As Range
     Set rangeDiff = Application.InputBox(prompt:="", title:="Select the topleft cell for Output.", Type:=8)
-    If WorksheetFunction.CountA(rangeDiff.Resize(dataRows * dataColumns, dataColumns + 1)) <> 0 Then
+    If WorksheetFunction.CountA(rangeDiff.Resize(dataRows * dataColumns + 1, dataColumns + 1)) <> 0 Then
         MsgBox "Output range is not Empty."
         Exit Sub
     End If
@@ -38,7 +45,6 @@ Sub checkExistOrNot()
     
     For c = 1 To dataColumns
         Set dic(c) = CreateObject("Scripting.Dictionary")
-    
     Next
     
     Dim dicDiff As Object
@@ -81,14 +87,17 @@ Sub checkExistOrNot()
     
     '' make result and output the result
     Dim outValue As Variant
-    outValue = rangeDiff.Resize(UBound(allKeys) + 1, dataColumns + 1)
+    outValue = rangeDiff.Resize(UBound(allKeys) + 2, dataColumns + 1)
     
     For i = 0 To UBound(allKeys)
-        outValue(i + 1, 1) = diffArrayList(i)
+        outValue(i + 2, 1) = diffArrayList(i)
         For c = 1 To dataColumns
-            outValue(i + 1, c + 1) = dic(c).Exists(diffArrayList(i))
+            outValue(i + 2, c + 1) = dic(c).Exists(diffArrayList(i))
         Next
     Next
     
-    rangeDiff.Resize(UBound(allKeys) + 1, dataColumns + 1) = outValue
+    rangeDiff.Resize(UBound(allKeys) + 2, dataColumns + 1) = outValue
+    If rngData.Resize(1).row > 1 Then
+        rangeDiff.Resize(1, dataColumns).Offset(0, 1) = title
+    End If
 End Sub
