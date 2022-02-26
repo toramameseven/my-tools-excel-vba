@@ -6,6 +6,9 @@
 +
 image:./doc/checkExistOrNotB15.png[]
 
+
+. Run this method.
+
 + 
 . The input dialog for the output ob result
 
